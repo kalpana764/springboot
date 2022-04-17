@@ -1,20 +1,26 @@
 package com.ss.org.cartService.entity;
 
-import com.ss.org.cartService.model.Cart;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import lombok.*;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name="USER")
+@Getter
+@Setter
+@Builder(setterPrefix = "with")
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class User {
 
     @Id
     @GeneratedValue
-    private int id;
+    private String id;
     private String name;
+
+    @OneToOne(cascade = CascadeType.ALL)
     private Cart cart;
     private String phoneNumber;
     private String email;

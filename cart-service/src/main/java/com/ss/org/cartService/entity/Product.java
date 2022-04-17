@@ -1,17 +1,22 @@
 package com.ss.org.cartService.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import lombok.*;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name="PRODUCT")
+@Builder(setterPrefix = "with")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Product {
 
     @Id
     @GeneratedValue
-    private int id;
+    @OneToMany(mappedBy = "product")
+    private String id;
     private String name;
     private int price;
     private String brand;
