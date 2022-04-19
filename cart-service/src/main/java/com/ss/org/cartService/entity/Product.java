@@ -15,10 +15,13 @@ public class Product {
 
     @Id
     @GeneratedValue
-    @OneToMany(mappedBy = "product")
-    private String id;
+    private String productId;
     private String name;
     private int price;
     private String brand;
     private String desc;
+
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "cartId")
+    private Cart cart;
 }

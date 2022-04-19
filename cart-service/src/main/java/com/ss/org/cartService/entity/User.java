@@ -17,10 +17,10 @@ public class User {
 
     @Id
     @GeneratedValue
-    private String id;
+    private String userId;
     private String name;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "user",cascade = CascadeType.ALL)
     private Cart cart;
     private String phoneNumber;
     private String email;

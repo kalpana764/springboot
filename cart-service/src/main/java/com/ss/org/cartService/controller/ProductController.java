@@ -36,29 +36,29 @@ public class ProductController {
         }
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<?> getProduct(@PathVariable(name = "id") String id){
+    @GetMapping("/{product_id}")
+    public ResponseEntity<?> getProduct(@PathVariable(name = "product_id") String productId){
         log.info("getProduct :: start");
         try{
-            log.info("get product for id: {}", id);
-            Product product = productRepository.getById(id);
+            log.info("get product for id: {}", productId);
+            Product product = productRepository.getById(productId);
             return new ResponseEntity<>(product, HttpStatus.OK);
         }
         catch(Exception e){
-            log.error("Error while getting product with id",e);
+            log.error("Error while getting product",e);
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteProduct(@PathVariable(name= "id") String id){
+    @DeleteMapping("/{product_id}")
+    public ResponseEntity<String> deleteProduct(@PathVariable(name= "product_id") String productId){
         log.info("deleteProduct :: start");
         try{
-            productRepository.deleteById(id);
+            productRepository.deleteById(productId);
             return new ResponseEntity<>("Product deleted", HttpStatus.BAD_REQUEST);
         }
         catch(Exception e){
-            log.error("Error while deleting product with id: {}",id , e);
+            log.error("Error while deleting product " , e);
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
